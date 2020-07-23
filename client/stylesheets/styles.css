@@ -1,14 +1,9 @@
 .app {
-  background: #209cee;
-  padding: 30px;
-  height: 100vh;
+ 
 }
 
 .foodDetails {
-  background: #e8e8e8;
-  border-radius: 4px;
-  padding: 5px;
-  max-width: 400px;
+
 }
   
 .form {
@@ -17,14 +12,26 @@
 }
 
 .foodContainer {
-  background: #fff;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-  padding: 3px 10px;
-  font-size: 12px;
-  margin-bottom: 6px;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+ 
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(74, 81, 83);
+  color: white;
+}
+.nav-links{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+h5 {
+  display:flex;
+  flex-direction: column;
+}

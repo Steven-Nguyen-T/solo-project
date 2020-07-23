@@ -7,15 +7,17 @@
     "start": "nodemon server/server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "concurrently \"nodemon server/server\" \"webpack-dev-server --open\""
+    "dev": "concurrently \"nodemon server/server\" \"webpack-dev-server --open --inline --content-base . --history-api-fallback\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.10.5",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "mongodb": "^3.5.9",
@@ -26,11 +28,13 @@
     "react-hot-loader": "^4.12.21",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.6",
     "request": "^2.88.2",
     "webpack": "^4.43.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",

@@ -5,8 +5,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
+    publicPath: '/'
   },
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -28,12 +29,14 @@ module.exports = {
   },
   //
   devServer: {
-    contentBase: path.join(__dirname, '/client'),
-    port: 8080,
+    contentBase: path.join(__dirname, '/build'),
+    // port: 8080,
     publicPath: '/build/',
     proxy: {
-      '/hey': 'http://localhost:3000',
+      '/': 'http://localhost:3000',
     },
+    historyApiFallback: true,
   },
+  // devtool: "eval-source-map",
 }
 

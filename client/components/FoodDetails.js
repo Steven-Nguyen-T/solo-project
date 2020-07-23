@@ -3,46 +3,69 @@ import axios from 'axios';
 
 const FoodDetails = () => {
 
-  // const { favFood, setFavFood } = useState({
-  //   dishName: "",
-  //   image: "",
-  //   restaurant: "",
-  //   rating: "",
-  //   category: "",
-  //   location: ""
-  // });
+  const [newFood, setFavFood] = useState({
+    dishName: "",
+    image: "",
+    restaurant: "",
+    rating: "",
+    category: "",
+    location: ""
+  });
 
-  // const { dishName, image, restaurant, rating, category, location } = favFood;
+  const { dishName, image, restaurant, rating, category, location } = newFood;
 
-  // const onChange = e => setFavFood({ ...favFood, [e.target.name]: e.target.value });
+  const handleChange = event => {
+    console.log(event.target.value)
+    console.log(event.target.name)
+    setFavFood({ ...newFood, [event.target.name]: event.target.value }); //.name is built in
+  }
 
-  // const onSubmit = async e => {
-  //   const newFood = {
-  //     dishName,
-  //     image,
-  //     restaurant,
-  //     rating,
-  //     category,
-  //     location
-  //   }
-  //   try {
-  //     const body = JSON.stringify(newFood);
-  //     const res = await axios.post('https://localhost:8080/foods', body);
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const newFood = JSON.stringify({
+      dishName,
+      image,
+      restaurant,
+      rating,
+      category,
+      location
+    })
+    // const newFood = {
+    //   dishName,
+    //   image,
+    //   restaurant,
+    //   rating,
+    //   category,
+    //   location
+    // }
+
+    axios.post('http://localhost:3000/foods', newFood, config)
+      .then(res => {
+        console.log(res);
+        console.log(res.data)
+        // window.location = '/allFoods'
+        res.redirect('/allFoods')
+      })
+      .catch(error => console.log(error))
+  }
 
   return (
     <div className="foodDetails">
-      <form method="POST" action="http://localhost:8080/foods" onSubmit={e => onSubmit(e)}>
-        <input className="form" type={Text} placeholder="Enter the name of the dish" onChange={e => onChange(e)}></input>
-        <input className="form" type={Text} placeholder="Add an image" onChange={e => onChange(e)}></input>
-        <input className="form" type={Text} placeholder="Enter a restaurant name" onChange={e => onChange(e)}></input>
-        <input className="form" type={Text} placeholder="Rate the food" onChange={e => onChange(e)}></input>
-        <input className="form" type={Text} placeholder="Type of food" onChange={e => onChange(e)}></input>
-        <input className="form" type={Text} placeholder="Location of restaurant" onChange={e => onChange(e)}></input>
-        <input type="submit" value="submit"></input>
+      <form className="form">
+        <input type='text' name="dishName" placeholder="Enter the name of the dish" onChange={event => handleChange(event)}></input>
+        <input type='text' name="image" placeholder="Add an image" onChange={event => handleChange(event)}></input>
+        <input type='text' name="restaurant" placeholder="Enter a restaurant name" onChange={event => handleChange(event)}></input>
+        <input type='text' name="rating" placeholder="Rate the food" onChange={event => handleChange(event)}></input>
+        <input type='text' name="category" placeholder="Type of food" onChange={event => handleChange(event)}></input>
+        <input type='text' name="location" placeholder="Location of restaurant" onChange={event => handleChange(event)}></input>
+        <button type="submit" onClick={event => handleSubmit(event)}>Submit</button>
       </form>
     </div>
   )
