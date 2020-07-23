@@ -1,7 +1,3 @@
-.app {
- 
-}
-
 .foodDetails {
 
 }
@@ -34,4 +30,8 @@ nav {
 h5 {
   display:flex;
   flex-direction: column;
+}
+
+.home {
+  background-image: url(https://www.daringgourmet.com/wp-content/uploads/2013/05/Teriyaki-Sauce-Collage-Final.jpg);
 }

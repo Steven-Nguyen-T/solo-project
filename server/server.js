@@ -76,7 +76,7 @@ app.delete('/foods/:id', foodController.deleteFood, (req, res) => {
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/index.html'), function (err) { //for no 404 error w/ react router
     if (err) {
-      res.status(500).send(err)
+      res.status(400).send(err)
     }
   })
 })

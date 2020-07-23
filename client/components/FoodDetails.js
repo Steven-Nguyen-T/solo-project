@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { Button } from '@material-ui/core';
 
 const FoodDetails = () => {
 
@@ -65,7 +66,7 @@ const FoodDetails = () => {
         <input type='text' name="rating" placeholder="Rate the food" onChange={event => handleChange(event)}></input>
         <input type='text' name="category" placeholder="Type of food" onChange={event => handleChange(event)}></input>
         <input type='text' name="location" placeholder="Location of restaurant" onChange={event => handleChange(event)}></input>
-        <button type="submit" onClick={event => handleSubmit(event)}>Submit</button>
+        <Button type="submit" onClick={event => handleSubmit(event)}>Submit</Button>
       </form>
     </div>
   )

@@ -80,12 +80,12 @@ foodController.updateFood = (req, res, next) => {
 foodController.deleteFood = (req, res, next) => {
   // This controller will allow the user to delete the food
   Food.findOneAndRemove({ _id: req.params.id })
-    .then((err, deletedFood) => {
-      if (err) return res.status(500).send(err)
-      const response = {
-        message: "Food successfully deleted",
+    .then((data) => {
+      if (data) {
+        console.log("Food successfully deleted")
+        return res.status(200).send(data)
       }
-      return res.status(200).send(response)
+      return res.status(400).send(err)
     })
 }
 
