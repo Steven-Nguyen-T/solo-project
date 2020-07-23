@@ -39,12 +39,14 @@ app.use(
   })
 )
 
-
 app.get('/', express.static('client'));
 console.log('received get request to home route')
 
 app.use('/build', express.static(path.join(__dirname, '../build')))
 
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html')) //for no 404 error with react router
+})
 
 app.get('/foods/:id', foodController.getOneFood, (req, res) => {
   res.status(200).json(res.locals.foods);
@@ -72,7 +74,7 @@ app.delete('/foods/:id', foodController.deleteFood, (req, res) => {
 
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../build/index.html'), function (err) {
+  res.sendFile(path.join(__dirname, '../client/index.html'), function (err) { //for no 404 error w/ react router
     if (err) {
       res.status(500).send(err)
     }

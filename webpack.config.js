@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/' // for no 404 error with react router
   },
   mode: 'development',
   module: {
@@ -29,13 +29,13 @@ module.exports = {
   },
   //
   devServer: {
-    contentBase: path.join(__dirname, '/build'),
+    contentBase: path.join(__dirname, '/client'),
     // port: 8080,
     publicPath: '/build/',
     proxy: {
       '/': 'http://localhost:3000',
     },
-    historyApiFallback: true,
+    historyApiFallback: true, // for no 404 error with react router
   },
   // devtool: "eval-source-map",
 }

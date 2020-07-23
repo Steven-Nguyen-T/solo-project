@@ -50,8 +50,8 @@ const FoodDetails = () => {
       .then(res => {
         console.log(res);
         console.log(res.data)
-        // window.location = '/allFoods'
-        res.redirect('/allFoods')
+        window.location = '/allFoods'
+        // res.redirect('/allFoods')
       })
       .catch(error => console.log(error))
   }
