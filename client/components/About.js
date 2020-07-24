@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
 
   const navStyle = {
-    color: 'lightblue'
+    color: 'rgb(74, 81, 83)'
   };
 
   return (

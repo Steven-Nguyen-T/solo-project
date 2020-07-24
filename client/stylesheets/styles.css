@@ -1,14 +1,8 @@
-.foodDetails {
-
-}
+@import url('https://fonts.googleapis.com/css?family=Walter+Turncoat');
   
 .form {
   display: flex;
   flex-direction: column;
-}
-
-.foodContainer {
- 
 }
 
 nav {
@@ -34,4 +28,13 @@ h5 {
 
 .home {
   background-image: url(https://www.daringgourmet.com/wp-content/uploads/2013/05/Teriyaki-Sauce-Collage-Final.jpg);
+  display: inline-block;
+  width: 1500px;
+	height: 630px;
+}
+
+.img {
+  display: inline-block;
+  width:1350px;
+  height:530px;
 }

@@ -98,10 +98,19 @@ export default function AllFoods() {
             console.log(response.data)
             setDatas(response.data)
           });
-        // console.log(data)
-        // window.location = '/allFoods'
-        // history.push('/allFoods')
-        // res.redirect('/allFoods')
+      })
+      .catch(error => console.log(error))
+  }
+
+  const updateFoods = (data, allData) => {
+
+    axios.post('http://localhost:3000/foods/' + data._id)
+      .then(res => {
+        axios.get('http://localhost:3000/foods')
+          .then((response) => {
+            console.log(response.data)
+            setDatas(response.data)
+          });
       })
       .catch(error => console.log(error))
   }
@@ -127,20 +136,6 @@ export default function AllFoods() {
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               To all the amazing places I've been and food I've ate!
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -165,16 +160,13 @@ export default function AllFoods() {
                         <li>{data.location}</li>
                       </ul>
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
                   </CardContent>
                   <CardActions>
                     {console.log('this is ALL THE OBJECTS ->>>>>>>>>>>>>>', datas)}
                     <Button size="small" color="primary" onClick={() => deleteFoods(data, datas)}>
                       Delete
                     </Button>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={() => updateFoods(data, datas)}>
                       Edit
                     </Button>
                   </CardActions>
@@ -184,17 +176,6 @@ export default function AllFoods() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
